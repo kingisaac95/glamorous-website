@@ -7,9 +7,11 @@ const USE_PREFETCH = process.env.NODE_ENV !== 'test'
 module.exports = {
   webpack: config => {
     // Add in prefetch conditionally so we don't break jest snapshot testing
-    config.plugins.push(new webpack.DefinePlugin({
-      'process.env.USE_PREFETCH': JSON.stringify(USE_PREFETCH),
-    }))
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.USE_PREFETCH': JSON.stringify(USE_PREFETCH),
+      }),
+    )
 
     // Markdown loader so we can use docs as .md files
     config.module.rules.push({
